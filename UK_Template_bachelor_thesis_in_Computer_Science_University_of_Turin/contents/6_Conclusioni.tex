@@ -1,0 +1,50 @@
+\chapter{Conclusions}
+
+So here we are at the end. The initial goal was clear: to verify the efficiency of a newly conceived generative model, \emph{WaveStitch}.  
+As the work progressed, this goal proved to be not only a technical objective, but also a demonstration of method: the ability to bring tools created in the laboratory into dialogue with the complexity of the physical world, without simplifying it but learning to interpret it.  
+It is in this continuous mediation between theory and reality that I found the deepest motivation for my journey.  
+The most genuine satisfaction does not come from individual metrics — however significant — but from the big picture: from seeing \textbf{coherent and recognisable structures} emerge from sequences that are only apparently chaotic.  
+Observing a model generate data that reflects the dynamics of a real system was like witnessing a form of \emph{resonance}, a moment when artificial intelligence seems to listen and return the voice hidden by the sensors of the servers that populate the HPC centre.  
+It is in this ability to ‘listen’ that I see the deepest potential of the tools that we, as \emph{researchers} and \emph{engineers}, can put at the service of knowledge and innovation.  
+The results obtained — from \emph{stitching} metrics to structural fidelity (\emph{ACD} and \emph{xCorrDiff}) — confirm \textbf{WaveStitch}'s robustness on multiple levels: temporal continuity, multivariate consistency, and robustness in the presence of noise.  
+
+\section{Future developments}
+I believe that this conclusion, however well-founded, remains a stepping stone.  
+I cannot help but imagine — indeed, none of us can fail to realise — the potential of these tools.  
+The prospects opened up by this work allow me to hypothesise numerous future developments, some of which I would like to mention:
+\begin{itemize}
+  \item the integration of \emph{WaveStitch} with \textbf{anomaly detection} modules based on unsupervised learning, to identify anomalous behaviour;
+  \item the use of the framework for \textbf{predictive energy simulation}, useful for planning efficiency and sustainability strategies for data centres;
+  \item the same for \textbf{predictive genomic sequencing simulation}, which is extremely useful in the biological/medical field;
+  \item the construction of true \textbf{digital twins} of monitored systems, in which synthetic data are not just statistical replicas but active elements in a continuous cycle of prediction, validation, and automatic decision-making.
+\end{itemize}
+In this broader context, diffusion models such as the one analysed have enormous potential and will certainly be the subject of my research in the coming years.
+
+\section{Final reflections}
+Finally, on a personal level, it goes without saying that this experience has been a training ground for research and growth for me.  
+It has confirmed that my studies are what I love most in my life, and for this I will be forever grateful to the teachers who have passed on their knowledge to me and to the institutions that have allowed me to be here today.  
+Dealing with imperfect data, unpredictable errors and real constraints has taught me that ‘doing research’ means, above all, maintaining a balance between rigour and creativity, between method and intuition.  
+It is in this balance that authentic discoveries are born.
+
+\section{Sources and tools used}
+
+All code, notebooks, documentation, system implementation, and source code for this thesis are available on GitHub at the following link:  
+\url{https://github.com/Frero0/bachelors-thesis-unito}
+
+\begin{figure}[H]
+\centering
+\qrcode[height=3.5cm]{https://github.com/Frero0/bachelors-thesis-unito}
+\caption{QR code linking to the public GitHub repository of this thesis.}
+\label{fig:qr_repo}
+\end{figure}
+The project was developed entirely in Python, using open-source tools and established scientific frameworks:
+\begin{itemize}
+  \item \textbf{Main libraries}: \texttt{NumPy}, \texttt{Pandas}, \texttt{Matplotlib}, \texttt{Seaborn}, \texttt{scikit-learn},\\ \texttt{statsmodels}, \texttt{PyTorch};
+  \item \textbf{Database}: \texttt{InfluxDB} (via Docker Compose, with authentication via secrets);
+  \item \textbf{Development environment}: \texttt{PyCharm} with Jupyter kernel for interactive analysis;
+  \item \textbf{Versioning and containers}: \texttt{Git}, \texttt{Docker};
+  \item \textbf{Data and figure processing}: integrated Python pipeline with modular scripts and visualisations via \texttt{Matplotlib} and \texttt{TikZ/PGFPlots} for diagrams.
+\end{itemize}
+All results, graphs and tables in this document were generated from real datasets provided by the HPC Centre in Turin, using dedicated notebooks and reproducible scripts.  
+The entire pipeline (loading, preprocessing, training, generation and analysis) was structured in a modular way so that it could be easily adapted to new datasets or extended with alternative generation models.
+

@@ -1,0 +1,180 @@
+% =========================
+% Main thesis file (English)
+% =========================
+
+\documentclass[a4paper,12pt,twoside,openright]{report}
+
+% --- Encoding & fonts ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{libertinus}
+\usepackage{newtxmath} % Times-like math matching well with Libertinus
+
+% --- Language (EN only) ---
+\usepackage[english]{babel}
+
+% --- Qr Code ---
+\usepackage{qrcode}
+
+% --- Page geometry & typography ---
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=3cm,right=3cm]{geometry}
+\usepackage[fontsize=12pt]{scrextend}
+\usepackage[final]{microtype}
+
+% --- Math, tables, figures, colors ---
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[dvipsnames,table]{xcolor}
+
+% --- Text / utilities ---
+\usepackage{rotating}
+\usepackage{ragged2e}
+\justifying
+\usepackage{url}
+\usepackage[normalem]{ulem}
+\usepackage{afterpage}
+\usepackage{xpatch}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{multicol}
+\usepackage{dirtree}
+
+% --- Code listings (prefer minted; requires -shell-escape) ---
+\usepackage{listings} % kept for completeness
+\usepackage{minted}
+\usemintedstyle{manni}
+\setminted[typescript]{%
+  framesep=2mm,
+  baselinestretch=1.2,
+  fontsize=\ttfamily\footnotesize,
+  linenos
+}
+% compact minted spacing
+\AtBeginEnvironment{minted}{\vspace{-0.5em}}
+\AfterEndEnvironment{minted}{\vspace{-0.5em}}
+
+% --- Captions & subfigures ---
+\usepackage{caption}
+\usepackage{subcaption}
+% remove "Table" prefix (as in your original)
+\captionsetup[table]{labelformat=empty}
+
+% --- Custom "code" environment for captionable code blocks ---
+\newenvironment{code}{\captionsetup{type=listing}}{}
+
+% --- Spacing around floats ---
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt plus 2pt minus 2pt}
+\setlength{\belowcaptionskip}{0pt plus 2pt minus 2pt}
+\usepackage[section]{placeins}
+\flushbottom
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+
+% --- Header / footer ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\rightmark}
+\rhead{\textbf{\thepage}}
+\fancyfoot{}
+\setlength{\headheight}{27pt}
+\addtolength{\topmargin}{-12pt}
+\fancypagestyle{plain}{
+  \fancyfoot{}
+  \fancyhead{}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% --- TikZ ---
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc,arrows.meta,decorations.pathreplacing}
+
+% --- Small helper macros ---
+\newcommand{\matchQCtablesize}{%
+  \small
+  \setlength{\tabcolsep}{9pt}%
+  \renewcommand{\arraystretch}{1.15}%
+}
+\newcommand\blankpage{%
+  \null
+  \thispagestyle{empty}%
+  \addtocounter{page}{-1}%
+  \newpage
+}
+
+% --- Icons next to titles (kept as in your setup) ---
+\usepackage{etoolbox}
+\newcommand{\icon}[1]{\includegraphics[height=12pt]{#1}}
+\robustify{\icon}
+
+% --- Keywords environment (English) ---
+\newenvironment{keywords}{%
+  \begin{center}
+    \textbf{Keywords}\par\vspace{0.5em}
+    \begin{minipage}{0.85\textwidth}\small
+}{%
+    \end{minipage}
+  \end{center}
+}
+
+% --- Index (if used) ---
+\usepackage{makeidx}
+\makeindex
+
+% --- Bibliography ---
+\usepackage[numbers,sort&compress]{natbib}
+
+% --- Labels in English ---
+\addto\captionsenglish{%
+  \renewcommand{\contentsname}{Table of Contents}
+  \renewcommand{\chaptername}{Chapter}
+  \renewcommand{\indexname}{Index}
+}
+
+% --- Hyperref LAST ---
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+
+% =========================
+% Document
+% =========================
+\begin{document}
+\selectlanguage{english}
+
+\include{contents/TitlePage}
+% \afterpage{\blankpage}
+\include{contents/CoolQuote}
+% \afterpage{\blankpage}
+\include{contents/Abstract}
+% \afterpage{\blankpage}
+\include{contents/ResponsabilityDeclaration}
+% \afterpage{\blankpage}
+
+% --- Table of contents ---
+\tableofcontents
+\cleardoublepage
+
+% --- Chapters ---
+% \include{contents/SampleChapter}
+\include{contents/0_Introduction}
+\include{contents/1_Background}
+\include{contents/2_WaveStitch}
+% \include{contents/3_Sys_Arch_and_Planning}
+\include{contents/4_Implementation}
+\include{contents/5_Valutazione_dei_risultati_e_conclusioni}
+\include{contents/6_Conclusioni}
+
+\include{contents/Thanks}
+% --- References ---
+\cleardoublepage
+\addcontentsline{toc}{chapter}{References}
+\bibliographystyle{plainurl}
+\bibliography{Bibliography}
+
+% \afterpage{\blankpage}
+
+
+\end{document}
