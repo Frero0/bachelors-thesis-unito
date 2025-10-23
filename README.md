@@ -64,8 +64,6 @@ If you reference or use parts of this work, please cite it as:
 
 **Federico Santorsola**  
 [federico.santorsola@edu.unito.it](mailto:federico.santorsola@edu.unito.it) 
-[fede.uchi@icloud.com](mailto:fede.uchi@icloud.com)
-[frero0.info@gmail.com](mailto:frero0.info@gmail.com)
 [GitHub Profile](https://github.com/Frero0)
 
 ---
