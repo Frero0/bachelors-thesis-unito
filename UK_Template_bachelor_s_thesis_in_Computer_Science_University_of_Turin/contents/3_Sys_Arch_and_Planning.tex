@@ -1,0 +1,67 @@
+\chapter{Architettura del sistema e pianificazione}
+
+% ---------------------------------
+\section{Struttura del database HPC}
+
+I dati energetici del centro HPC erano memorizzati in un \textbf{time series database} 
+(\emph{InfluxDB}), scelto per la sua efficienza nella gestione di misure temporali 
+con campionamenti regolari o irregolari.  
+
+La struttura del database comprendeva:
+\begin{itemize}
+  \item \textbf{Measurements}: tabelle logiche contenenti le misurazioni, ad esempio 
+  potenza trifase, energia cumulata, corrente per rack;
+  \item \textbf{Tags}: metadati associati (es. identificativo rack, posizione, sensore);
+  \item \textbf{Fields}: valori numerici (es. Watt, Volt, Ampere) registrati a intervalli regolari;
+  \item \textbf{Timestamp}: chiave primaria che definisce la sequenza temporale delle osservazioni.
+\end{itemize}
+
+Questa organizzazione ha reso possibile interrogare e filtrare rapidamente i dati 
+per finestra temporale, rack o tipo di misura.
+
+
+% ---------------------------------
+\section{Metriche e obiettivi di valutazione}
+
+Per valutare la qualità dei dati sintetici e delle previsioni si sono definiti obiettivi chiari:
+\begin{itemize}
+  \item \textbf{Confronto con i dati reali}: verifica della somiglianza statistica e 
+  strutturale rispetto alle serie originali;
+  \item \textbf{Metriche puntuali}: MAE, RMSE, MAPE, sMAPE per misurare la fedeltà numerica;
+  \item \textbf{Metriche normalizzate}: NRMSE, WMAPE per rendere comparabili dataset diversi;
+  \item \textbf{Metriche strutturali}: ACD (Autocorrelation Difference) e xCorrDiff per 
+  valutare autocorrelazioni e dipendenze multivariate.
+\end{itemize}
+
+Questi obiettivi hanno costituito la base per tutte le sperimentazioni successive.
+
+% ---------------------------------
+\section{Configurazione ambiente con Docker e InfluxDB}
+
+La configurazione ha previsto:
+\begin{itemize}
+  \item \textbf{Containerizzazione}: ogni servizio (InfluxDB, client CLI, interfacce di supporto) 
+  eseguito in container indipendenti;
+  \item \textbf{Sicurezza}: gestione delle credenziali tramite \emph{Docker secrets};
+  \item \textbf{Persistenza}: volumi montati per mantenere dati e configurazioni anche dopo 
+  il riavvio dei container;
+  \item \textbf{Accesso tramite API}: esposizione dei dati via REST API e client Python.
+\end{itemize}
+
+Questo ha garantito un ambiente portabile, stabile e facilmente replicabile.
+
+% ---------------------------------
+\section{Strumenti software utilizzati}
+
+L’ambiente di lavoro si è basato su strumenti open-source:
+\begin{itemize}
+  \item \textbf{Python} per l’analisi e l’implementazione;
+  \item \textbf{Pandas e NumPy} per la manipolazione dei dataset;
+  \item \textbf{Matplotlib e Statsmodels} per l’analisi visiva e la decomposizione statistica;
+  \item \textbf{PyTorch} come framework di deep learning per WaveStitch;
+  \item \textbf{InfluxDB client} per il trasferimento dati;
+  \item \textbf{Docker Compose} per l’orchestrazione dei container.
+\end{itemize}
+
+Questi strumenti hanno permesso di costruire un flusso end-to-end, dal dato grezzo 
+alla generazione sintetica, mantenendo modularità e riusabilità.
