@@ -1,71 +1,77 @@
-# Bachelor's Thesis – UniTo 
-### Synthetic Energy Time Series Generation with Diffusion Models (WaveStitch)
+# Bachelor's Thesis — University of Turin
 
-This repository contains my Bachelor's Thesis project for the **Computer Science degree** at the **University of Turin (UniTo)**.  
-The work explores the use of **generative diffusion models** — in particular *WaveStitch* — for the **conditional generation of synthetic time series** in High Performance Computing (HPC) environments.
+## Synthetic Energy Time Series Generation with Diffusion Models (WaveStitch)
 
----
+This repository contains the original work produced for my Bachelor's Thesis in Computer Science at the **University of Turin (UniTo)** in 2025. It is the historical record of the thesis project: its LaTeX sources, figures, bibliography, and compiled dissertation.
 
-## Project Overview
+The thesis studied the application of [WaveStitch](https://github.com/adis98/HierarchicalTS), a conditional diffusion model for time-series generation, to energy and environmental measurements collected in a High Performance Computing (HPC) research-centre setting.
 
-Modern HPC centres generate an enormous volume of energy and environmental data, which is extremely valuable for research but also **potentially sensitive**, as it can indirectly reveal workload patterns and operational activity.  
-This thesis investigates how **AI-based generative models** can be used to produce realistic, privacy-preserving synthetic data that reproduces the statistical and temporal dynamics of real energy signals.
+## Thesis scope
 
----
+HPC infrastructure produces multivariate energy and environmental time series that are useful for modelling, operational analysis, and sustainability research. These measurements can also reveal workload and system-activity patterns, which limits how the original data can be shared.
 
-## Objectives
+The thesis explored whether WaveStitch could generate synthetic sequences that retain relevant temporal and multivariate structure while supporting conditional generation. The work covered:
 
-- Generate **synthetic energy time series** that are realistic and statistically coherent with real HPC measurements.  
-- Ensure **privacy and confidentiality** of sensitive operational data.  
-- Demonstrate how diffusion-based AI models can be applied to **energy modelling and forecasting**.  
-- Validate the generated data using both **numerical (MSE)** and **structural (ACD, xCorrDiff)** metrics.
+- extraction and preprocessing of energy measurements from InfluxDB;
+- temporal alignment, normalization, and outlier handling;
+- exploratory correlation analysis, PCA, and k-Means clustering;
+- adaptation and application of WaveStitch to the HPC energy domain;
+- comparison of real and synthetic series using MSE, ACD, and xCorrDiff;
+- additional studies of imputation and scenario generation.
 
----
+The reported experiments include a successful/reference case on more regular aggregated signals and more challenging cases on noisy, discontinuous rack-level signals. The thesis and its conclusions should be read in the context of those specific datasets and experimental conditions.
 
-## Methodology
+## Data availability
 
-The project follows a structured workflow:
+The original energy/HPC datasets were provided by the research centre and are **not publicly included in this repository** because of access, confidentiality, and operational-sensitivity constraints. The repository must therefore not be interpreted as a public release of those measurements.
 
-1. **Data Cleaning and Normalisation**  
-   Extraction and preprocessing of energy data from InfluxDB, including outlier removal and time alignment.
+The included figures and tables document the historical thesis results. They are not substitutes for the original datasets, and no public reconstruction should be presented as if it were the source research-centre data.
 
-2. **Exploratory Analysis and Clustering**  
-   Correlation studies, PCA dimensionality reduction and k-Means clustering to identify operational regimes.
+## Repository contents
 
-3. **Generative Modelling with WaveStitch**  
-   Application of the *WaveStitch* diffusion model for conditional generation of multivariate time series.
+- [`Uk_Template_bachelor_thesis_in_Computer_Science_University_of_Turin.pdf`](Uk_Template_bachelor_thesis_in_Computer_Science_University_of_Turin.pdf): compiled thesis.
+- `UK_Template_bachelor_thesis_in_Computer_Science_University_of_Turin/main.tex`: main LaTeX entry point.
+- `UK_Template_bachelor_thesis_in_Computer_Science_University_of_Turin/contents/`: thesis chapters and front matter.
+- `UK_Template_bachelor_thesis_in_Computer_Science_University_of_Turin/images/`: figures used in the dissertation.
+- `UK_Template_bachelor_thesis_in_Computer_Science_University_of_Turin/Bibliography.bib`: bibliography.
 
-4. **Evaluation (Real vs Synthetic)**  
-   Quantitative and structural comparison using MSE, ACD, and xCorrDiff to assess fidelity and diversity.
+This repository preserves the work as submitted. It is not intended to be the actively developed generalized WaveStitch implementation.
 
----
+## Follow-up work
 
-## Technologies Used
+After completing the thesis, I developed a separate project:
 
-- **Python** (NumPy, Pandas, Matplotlib, Scikit-learn, Statsmodels)
-- **InfluxDB** (time-series data storage)
-- **WaveStitch** (diffusion-based generative model)
-- **Jupyter / PyCharm** (development and experimentation)
-- **LaTeX** (thesis typesetting)
+### [WaveStitch Generalized](https://github.com/Frero0/wavestitch-generalized)
 
----
+`wavestitch-generalized` extends the research into a configurable and reproducible implementation while remaining distinct from this historical thesis repository. It:
+
+- generalizes WaveStitch to configurable multivariate time-series datasets;
+- introduces leakage-free, train-only preprocessing while retaining an upstream-compatible legacy mode;
+- adds structured checkpoints, validation, experiment configuration, and reproducible evaluation;
+- includes a MetroTraffic reference reproduction as a successful/reference case;
+- includes a challenging UCI Occupancy case study with critical analysis of distribution shift, conditioning limitations, and sampler contribution;
+- reports both favorable results and observed model limitations transparently.
+
+The follow-up does not include, reconstruct, or simulate the proprietary HPC measurements used in the thesis. The two repositories serve different purposes: this repository documents the original bachelor-thesis work, while `wavestitch-generalized` contains the later generalized research pipeline and public validation studies.
 
 ## Citation
 
-If you reference or use parts of this work, please cite it as:
+If you reference this thesis, please cite:
 
-> **Santorsola, Federico (2025)**  
-> *Synthetic Energy Time Series Generation with Diffusion Models*  
-> Bachelor's Thesis, University of Turin (UniTo).
+> Santorsola, Federico (2025).
+>
+> *Synthetic Energy Time Series Generation with Diffusion Models*.
+>
+> Bachelor's Thesis, University of Turin.
 
----
+The original WaveStitch method should be attributed separately to its authors through the paper and [upstream repository](https://github.com/adis98/HierarchicalTS).
 
 ## Contact
 
-**Federico Santorsola**  
-[federico.santorsola@edu.unito.it](mailto:federico.santorsola@edu.unito.it) 
-[GitHub Profile](https://github.com/Frero0)
+**Federico Santorsola**
 
----
+[federico.santorsola@edu.unito.it](mailto:federico.santorsola@edu.unito.it)
 
-© 2025 Federico Santorsola. Released under the **MIT License**.
+[GitHub profile](https://github.com/Frero0)
+
+© 2025 Federico Santorsola. Repository contents are released under the [MIT License](LICENSE).
